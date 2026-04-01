@@ -13,6 +13,17 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        
+        # 双指针，如果有环则快慢指针必定相遇
+        if not head:
+            return False
+        slow = head
+        fast = head.next
+        while slow != fast:
+            if not(fast and fast.next):
+                return False
+            slow = slow.next
+            # fast步数为slow*2
+            fast = fast.next.next
+        return True
 # @lc code=end
 
